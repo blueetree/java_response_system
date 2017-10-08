@@ -218,9 +218,9 @@ public class MainClass {
         System.out.println("-----------------------------------------------------");    
         System.out.println("1:total revenues / per flight");
                 String filghtID;
-                int sizeFilght = ta.getMasterSchedule().getMasterSchedule().get(0).getFilghts().size();
-                //System.out.println("sizeFilght:"+sizeFilght);
-                String filghtPro[][]= new String[8][2];
+                int sizeFilght = ta.getMasterSchedule().getMasterSchedule().size();
+                // System.out.println("sizeFilght:"+sizeFilght);
+                String filghtPro[][]= new String[sizeFilght][2];
                 filghtID = ta.getCustomerDirectory().getCustomers().get(0).getFilghtID();
                 int sizeCustomer = ta.getCustomerDirectory().getCustomers().size();
                 int seatPrice = ta.getAirliners().getAirline().get(0).getFleet().get(0).getSeats().getSeats().get(0).getPrice();
@@ -251,16 +251,19 @@ public class MainClass {
             System.out.println("2:total revenues / per airliner"); 
             ArrayList allAirliner = new ArrayList<>();
             int sizeAirline = ta.getAirliners().getAirline().size();
+            System.out.println("sizeAirline:"+sizeAirline);
             ArrayList eachAirliner = new ArrayList<>();
+            int sizeFleets = 0;
+            for(int i = 0; i<sizeAirline;i++){
+                int sizeFleet = ta.getAirliners().getAirline().get(i).getFleet().size();
+                sizeFleets = sizeFleets+sizeFleet;
+            }
             for(int i = 0; i<sizeAirline;i++){
                 System.out.println("airliner:"+(i+1));
-                int sizeFleet = ta.getAirliners().getAirline().get(i).getFleet().size();
-                //System.out.println("sizeFleet:"+sizeFleet);
-               for(int j=i*4;j<4*(i+1);j++){
+               for(int j=i*sizeFleets;j<sizeFleets*(i+1);j++){
                        int sizefilght = ta.getMasterSchedule().getMasterSchedule().get(j).getFilghts().size();
                            String filghtSameID = ta.getMasterSchedule().getMasterSchedule().get(j).getFilghts().get(0).getFilghtID();
-                           
-                           for(int a=0;a<8;a++){
+                           for(int a=0;a<sizeFilght;a++){
                                if(filghtPro[a][0].equals(filghtSameID)){
                                    eachAirliner.add(filghtPro[a][1]);
                                   // System.out.println("filghtPro[1]:"+filghtPro[a][1]); 
