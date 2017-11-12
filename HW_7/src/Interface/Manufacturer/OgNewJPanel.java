@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interface.Provider;
+package Interface.Manufacturer;
 import Interface.List.*;
 import Interface.*;
 import Business.*;
@@ -151,7 +151,7 @@ public class OgNewJPanel extends javax.swing.JPanel {
 
     private void btnCreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCreateActionPerformed
         // TODO add your handling code here:
-        if(!txtMnName.getText().isEmpty()){
+        if(!txtOgName.getText().isEmpty()){
         Organization organization = selectEnterprise.getOrganizationDirectory().addOrganization(Organization.Type.Provider);
         organization.setOrganizaitonName(txtOgName.getText());
         organization.setResponsibility(txtRsn.getText());

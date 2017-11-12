@@ -55,7 +55,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="txtUpdate2" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="txtCreate2" min="-2" max="-2" attributes="0"/>
+                      <Component id="txtDelete" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -97,7 +97,7 @@
               <Component id="jScrollPane3" min="-2" pref="70" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="txtCreate2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtDelete" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtUpdate2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -301,18 +301,18 @@
     </Container>
     <Component class="javax.swing.JButton" name="txtUpdate2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Update Employee&gt;&gt;"/>
+        <Property name="text" type="java.lang.String" value="New Employee&gt;&gt;"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtUpdate2ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="txtCreate2">
+    <Component class="javax.swing.JButton" name="txtDelete">
       <Properties>
-        <Property name="text" type="java.lang.String" value="New Employee&gt;&gt;"/>
+        <Property name="text" type="java.lang.String" value="Delete Employee"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCreate2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDeleteActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnWorkArea">

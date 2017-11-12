@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interface.Provider;
+package Interface.Manufacturer;
 import Business.Enterprise.Enterprise;
+import Business.Organization.Organization;
 import Interface.List.*;
 import Business.System.Disease;
 import Interface.*;
@@ -22,16 +23,18 @@ public class OgUpdateJPanel extends javax.swing.JPanel {
 
     private JPanel basePanel;
     private Enterprise enterprise;
+    private Organization organization;
     /**
      * Creates new form SystemUpdateJPanel
      */
 
-    public OgUpdateJPanel(JPanel basePanel, Enterprise enterprise) {
+    public OgUpdateJPanel(JPanel basePanel, Enterprise enterprise,Organization organization) {
         initComponents();
         this.basePanel = basePanel;
         this.enterprise = enterprise;
-        txtFirstName.setText(enterprise.getOrganizaitonName());
-        txtPersonID.setText(enterprise.getEnterpriselocation());
+        this.organization = organization;
+        txtOgName.setText(organization.getOrganizaitonName());
+        txtRsn.setText(organization.getResponsibility());
     }
 
     /**
@@ -45,31 +48,22 @@ public class OgUpdateJPanel extends javax.swing.JPanel {
 
         jLabel1 = new javax.swing.JLabel();
         btnSave = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        txtFirstName = new javax.swing.JTextField();
         btnUpdate = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        txtPersonID = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtRsn = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtOgName = new javax.swing.JTextField();
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Update Manufacturer Info");
+        jLabel1.setText("Update Organization Info");
 
         btnSave.setText("Save");
         btnSave.setEnabled(false);
         btnSave.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSaveActionPerformed(evt);
-            }
-        });
-
-        jLabel4.setText("State");
-
-        txtFirstName.setEditable(false);
-        txtFirstName.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFirstNameActionPerformed(evt);
             }
         });
 
@@ -87,9 +81,9 @@ public class OgUpdateJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel8.setText("Manufacturer Name");
+        jLabel4.setText("responsibility");
 
-        txtPersonID.setEditable(false);
+        jLabel6.setText("Organization Name");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -104,21 +98,21 @@ public class OgUpdateJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
-                                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel6)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtOgName, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel4)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel8)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtPersonID, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                        .addComponent(txtRsn, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
+                                .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)))
                         .addContainerGap(102, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(btnBack)
@@ -129,41 +123,41 @@ public class OgUpdateJPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addGap(47, 47, 47)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(txtPersonID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(jLabel6)
+                    .addComponent(txtOgName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                    .addComponent(txtRsn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnSave)
                     .addComponent(btnUpdate))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
                 .addComponent(btnBack))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // TODO add your handling code here:
-        txtFirstName.setEditable(true);
-        txtPersonID.setEditable(true);
+        txtOgName.setEditable(true);
+        txtRsn.setEditable(true);
         btnSave.setEnabled(true);
         btnUpdate.setEnabled(false) ;
     }//GEN-LAST:event_btnUpdateActionPerformed
 
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         // TODO add your handling code here:
-        if(!txtPersonID.getText().isEmpty() && !txtFirstName.getText().isEmpty()){
+        if(!txtRsn.getText().isEmpty() && !txtOgName.getText().isEmpty()){
 
-        enterprise.setOrganizaitonName(txtPersonID.getText());
-        enterprise.setEnterpriselocation(txtFirstName.getText());
+        organization.setOrganizaitonName(txtOgName.getText());
+        organization.setResponsibility(txtRsn.getText());
         JOptionPane.showMessageDialog(null, "Update Successfully!");
         
-        txtFirstName.setEditable(false);
-        txtPersonID.setEditable(true);
+        txtOgName.setEditable(false);
+        txtRsn.setEditable(true);
         }else{
             JOptionPane.showMessageDialog(null, "Please input the correct info!");
         }
@@ -176,14 +170,10 @@ public class OgUpdateJPanel extends javax.swing.JPanel {
         Component[] componentArray = basePanel.getComponents();
         Component component = componentArray[componentArray.length - 1];
         ProviderTableJPanel panel = (ProviderTableJPanel) component;
-        panel.populateTable1();
+        panel.populateTable2(enterprise);
         CardLayout layout = (CardLayout)basePanel.getLayout();
         layout.previous(basePanel);
     }//GEN-LAST:event_btnBackActionPerformed
-
-    private void txtFirstNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFirstNameActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFirstNameActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -192,8 +182,8 @@ public class OgUpdateJPanel extends javax.swing.JPanel {
     private javax.swing.JButton btnUpdate;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JTextField txtFirstName;
-    private javax.swing.JTextField txtPersonID;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JTextField txtOgName;
+    private javax.swing.JTextField txtRsn;
     // End of variables declaration//GEN-END:variables
 }

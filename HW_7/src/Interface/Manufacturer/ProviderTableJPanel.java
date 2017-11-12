@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interface.Provider;
+package Interface.Manufacturer;
 
 import Business.Network.Network;
 import Business.Enterprise.Enterprise;
@@ -56,7 +56,6 @@ public final class ProviderTableJPanel extends javax.swing.JPanel {
         }
     
     public void populateTable2(Enterprise selectEnterprise){
-
         DefaultTableModel dtm = (DefaultTableModel)tblOrganization.getModel();
         dtm.setRowCount(0);
         for(Organization organization : selectEnterprise.getOrganizationDirectory().getOrganizationDirectory()){
@@ -67,19 +66,15 @@ public final class ProviderTableJPanel extends javax.swing.JPanel {
             }
         }
     
-    public void populateTable3(){
-        DefaultTableModel dtm = (DefaultTableModel)tblEnterprise.getModel();
+    public void populateTable3(Organization selectOrganization){
+        DefaultTableModel dtm = (DefaultTableModel)tblStaff.getModel();
         dtm.setRowCount(0);
-        for(Enterprise enterprise : network.getEnterpriseDirectory().getEnterpriseList()){
-            if(enterprise.getEnterpriseType().toString().equals("Manufacturer")){
-            Object row[] = new Object[3];
-            row[0]=enterprise;
-            row[1]=enterprise.getOrganizationID();
-            row[2]=enterprise.getEnterpriselocation();
+        for(Person person : selectOrganization.getStaffDirectory().getStaffDirectory()){
+            Object row[] = new Object[2];
+            row[0]=person;
+            row[1]=String.valueOf(person.getID());
             dtm.addRow(row);
             }
-            
-        }
         }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -107,7 +102,7 @@ public final class ProviderTableJPanel extends javax.swing.JPanel {
         jScrollPane3 = new javax.swing.JScrollPane();
         tblStaff = new javax.swing.JTable();
         txtUpdate2 = new javax.swing.JButton();
-        txtCreate2 = new javax.swing.JButton();
+        txtDelete = new javax.swing.JButton();
         btnWorkArea = new javax.swing.JButton();
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -234,17 +229,17 @@ public final class ProviderTableJPanel extends javax.swing.JPanel {
             tblStaff.getColumnModel().getColumn(1).setResizable(false);
         }
 
-        txtUpdate2.setText("Update Employee>>");
+        txtUpdate2.setText("New Employee>>");
         txtUpdate2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtUpdate2ActionPerformed(evt);
             }
         });
 
-        txtCreate2.setText("New Employee>>");
-        txtCreate2.addActionListener(new java.awt.event.ActionListener() {
+        txtDelete.setText("Delete Employee");
+        txtDelete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCreate2ActionPerformed(evt);
+                txtDeleteActionPerformed(evt);
             }
         });
 
@@ -292,7 +287,7 @@ public final class ProviderTableJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(txtUpdate2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtCreate2)))
+                        .addComponent(txtDelete)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -326,7 +321,7 @@ public final class ProviderTableJPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtCreate2)
+                    .addComponent(txtDelete)
                     .addComponent(txtUpdate2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnBack))
@@ -364,23 +359,48 @@ public final class ProviderTableJPanel extends javax.swing.JPanel {
 
     private void txtUpdate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUpdate1ActionPerformed
         // TODO add your handling code here:
+        int selectedRow = tblOrganization.getSelectedRow();
+        if(selectedRow<0){
+            JOptionPane.showMessageDialog(null, "Please select!");
+        }else{
+            Organization organization = (Organization)tblEnterprise.getValueAt(selectedRow, 0);
+            OgUpdateJPanel panel = new OgUpdateJPanel(basePanel,selectEnterprise,organization);
+            basePanel.add("OgUpdateJPanel",panel);
+            CardLayout layout = (CardLayout)basePanel.getLayout();
+            layout.next(basePanel);
+        }
     }//GEN-LAST:event_txtUpdate1ActionPerformed
 
     private void txtCreate1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCreate1ActionPerformed
         // TODO add your handling code here:
+        if(selectEnterprise!=null){
         OgNewJPanel panel = new OgNewJPanel(basePanel,selectEnterprise);
         basePanel.add("OgNewJPanel",panel);
         CardLayout layout = (CardLayout)basePanel.getLayout();
         layout.next(basePanel);
+        }
     }//GEN-LAST:event_txtCreate1ActionPerformed
 
     private void txtUpdate2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUpdate2ActionPerformed
         // TODO add your handling code here:
+        if(selectOrganization!=null){
+            EmyNewJPanel panel = new EmyNewJPanel(basePanel,selectOrganization);
+            basePanel.add("EmyNewJPanel",panel);
+            CardLayout layout = (CardLayout)basePanel.getLayout();
+            layout.next(basePanel);
+        }
     }//GEN-LAST:event_txtUpdate2ActionPerformed
 
-    private void txtCreate2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCreate2ActionPerformed
+    private void txtDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDeleteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtCreate2ActionPerformed
+        int selectedRow = tblStaff.getSelectedRow();
+        if(selectedRow<0){
+            JOptionPane.showMessageDialog(null, "Please select!");
+        }else{
+            Person staff = (Person)tblStaff.getValueAt(selectedRow, 0);
+            selectOrganization.getStaffDirectory().deleteStaff(staff);
+        }
+    }//GEN-LAST:event_txtDeleteActionPerformed
 
     private void btnShow2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShow2ActionPerformed
         // TODO add your handling code here:
@@ -395,6 +415,16 @@ public final class ProviderTableJPanel extends javax.swing.JPanel {
 
     private void btnWorkAreaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnWorkAreaActionPerformed
         // TODO add your handling code here:
+         int selectedRow = tblOrganization.getSelectedRow();
+        if(selectedRow<0){
+            JOptionPane.showMessageDialog(null, "Please select!");
+        }else{
+        Organization organization = (Organization)tblEnterprise.getValueAt(selectedRow, 0);
+        WorkAreaTableJPanel panel = new WorkAreaTableJPanel(basePanel,selectEnterprise,organization);
+        basePanel.add("WorkAreaTableJPanel",panel);
+        CardLayout layout = (CardLayout)basePanel.getLayout();
+        layout.next(basePanel);
+        }
     }//GEN-LAST:event_btnWorkAreaActionPerformed
 
     private void btnShow3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShow3ActionPerformed
@@ -403,15 +433,8 @@ public final class ProviderTableJPanel extends javax.swing.JPanel {
         if(selectedRow<0){
             JOptionPane.showMessageDialog(null, "Please select!");
         }else{
-        Organization organization = (Organization)tblOrganization.getValueAt(selectedRow, 0);
-        DefaultTableModel dtm = (DefaultTableModel)tblStaff.getModel();
-        dtm.setRowCount(0);
-        for(Person person : organization.getStaffDirectory().getStaffDirectory()){
-            Object row[] = new Object[2];
-            row[0]=person;
-            row[1]=String.valueOf(person.getID());
-            dtm.addRow(row);
-            }
+        selectOrganization = (Organization)tblOrganization.getValueAt(selectedRow, 0);
+        populateTable3(selectOrganization);
         }
     }//GEN-LAST:event_btnShow3ActionPerformed
 
@@ -432,7 +455,7 @@ public final class ProviderTableJPanel extends javax.swing.JPanel {
     private javax.swing.JTable tblStaff;
     private javax.swing.JButton txtCreate;
     private javax.swing.JButton txtCreate1;
-    private javax.swing.JButton txtCreate2;
+    private javax.swing.JButton txtDelete;
     private javax.swing.JButton txtUpdate;
     private javax.swing.JButton txtUpdate1;
     private javax.swing.JButton txtUpdate2;

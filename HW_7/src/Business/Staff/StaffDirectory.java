@@ -32,4 +32,8 @@ public class StaffDirectory {
         staffDirectory.add(person);
         return person;
     }
+    
+    public void deleteStaff(Person staff){
+        staffDirectory.remove(staff);
+    }
 }

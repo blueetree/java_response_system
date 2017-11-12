@@ -20,6 +20,30 @@ public class WorkArea {
         workAreaID = counter;
         ++counter;
     }
+
+    public int getWorkAreaID() {
+        return workAreaID;
+    }
+
+    public void setWorkAreaID(int workAreaID) {
+        this.workAreaID = workAreaID;
+    }
+
+    public String getWorkAreaName() {
+        return workAreaName;
+    }
+
+    public void setWorkAreaName(String workAreaName) {
+        this.workAreaName = workAreaName;
+    }
+
+    public String getWorkAreaLocation() {
+        return workAreaLocation;
+    }
+
+    public void setWorkAreaLocation(String workAreaLocation) {
+        this.workAreaLocation = workAreaLocation;
+    }
     
     @Override
     public String toString() {

@@ -8,8 +8,10 @@ import Business.EcoSystem;
 
 import Business.Enterprise.Enterprise;
 import Business.Network.Network;
+import Business.Role.Role;
 import Business.Staff.Person;
 import Business.UserAccount.UserAccount;
+import Business.WorkArea.WorkArea;
 import java.awt.CardLayout;
 import java.awt.Component;
 import javax.swing.JPanel;
@@ -248,7 +250,7 @@ public class ManageEnterpriseAdminJPanel extends javax.swing.JPanel {
         String password = String.valueOf(passwordJPasswordField.getPassword());
         String name = nameJTextField.getText();
         Person person = enterprise.getStaffDirectory().addStaff(name);
-        UserAccount account = enterprise.getUserAccountDirectory().createUserAccount(username, password, employee, new AdminRole());
+        UserAccount account = enterprise.getUserAccountDirectory().addUserAccount(username, password, person,new SystemAdminRole());
         populateTable();
         
     }//GEN-LAST:event_submitJButtonActionPerformed

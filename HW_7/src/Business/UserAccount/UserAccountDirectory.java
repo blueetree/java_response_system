@@ -33,12 +33,11 @@ public class UserAccountDirectory {
         return null;
     }
     
-    public UserAccount addUserAccount(String username, String password, Person person, WorkArea workArea,Role role){
+    public UserAccount addUserAccount(String username, String password, Person person, Role role){
         UserAccount userAccount = new UserAccount();
         userAccount.setUserName(username);
         userAccount.setUserPassword(password);
         userAccount.setPerson(person);
-        userAccount.setWorkArea(workArea);
         userAccount.setRole(role);
         userAccountList.add(userAccount);
         return userAccount;
