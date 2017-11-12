@@ -10,7 +10,19 @@ package Business.WorkArea;
  * @author jiahuanli
  */
 public class WorkArea {
-    private String workAreaID;
+    private int workAreaID;
     private String workAreaName;
     private String workAreaLocation;
+    private static int counter;
+    
+    public WorkArea(String name) {
+        workAreaName = name;
+        workAreaID = counter;
+        ++counter;
+    }
+    
+    @Override
+    public String toString() {
+        return workAreaName;
+    }
 }

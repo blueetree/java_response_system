@@ -13,8 +13,6 @@ import Business.Organization.OrganizationDirectory;
  * @author jiahuanli
  */
 public abstract class Enterprise extends Organization{
-    private String enterpriseID;
-    private String enterpriseName;
     private String enterpriselocation;
     private EnterpriseType enterpriseType;
     private OrganizationDirectory organizationDirectory;
@@ -54,22 +52,6 @@ public abstract class Enterprise extends Organization{
         return organizationDirectory;
     }
 
-    public String getEnterpriseID() {
-        return enterpriseID;
-    }
-
-    public void setEnterpriseID(String enterpriseID) {
-        this.enterpriseID = enterpriseID;
-    }
-
-    public String getEnterpriseName() {
-        return enterpriseName;
-    }
-
-    public void setEnterpriseName(String enterpriseName) {
-        this.enterpriseName = enterpriseName;
-    }
-
     public String getEnterpriselocation() {
         return enterpriselocation;
     }
@@ -78,9 +60,5 @@ public abstract class Enterprise extends Organization{
         this.enterpriselocation = enterpriselocation;
     }
     
-    @Override
-    public String toString(){
-        return enterpriseID;
-    }
 
 }

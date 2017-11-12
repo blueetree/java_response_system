@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Interface.Provider;
+import Business.Enterprise.Enterprise;
 import Interface.List.*;
 import Business.System.Disease;
 import Interface.*;
@@ -17,20 +18,20 @@ import javax.swing.JPanel;
  *
  * @author jiahuanli
  */
-public class DiseaseUpdateJPanel extends javax.swing.JPanel {
+public class OgUpdateJPanel extends javax.swing.JPanel {
 
     private JPanel basePanel;
-    private Disease disease;
+    private Enterprise enterprise;
     /**
      * Creates new form SystemUpdateJPanel
      */
 
-    public DiseaseUpdateJPanel(JPanel basePanel, Disease disease) {
+    public OgUpdateJPanel(JPanel basePanel, Enterprise enterprise) {
         initComponents();
         this.basePanel = basePanel;
-        this.disease = disease;
-        txtFirstName.setText(disease.getDiseaseName());
-        txtPersonID.setText(disease.getDiseaseID());
+        this.enterprise = enterprise;
+        txtFirstName.setText(enterprise.getOrganizaitonName());
+        txtPersonID.setText(enterprise.getEnterpriselocation());
     }
 
     /**
@@ -53,7 +54,7 @@ public class DiseaseUpdateJPanel extends javax.swing.JPanel {
 
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 1, 14)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Update Disease Info");
+        jLabel1.setText("Update Manufacturer Info");
 
         btnSave.setText("Save");
         btnSave.setEnabled(false);
@@ -63,7 +64,7 @@ public class DiseaseUpdateJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel4.setText("Disease Name");
+        jLabel4.setText("State");
 
         txtFirstName.setEditable(false);
         txtFirstName.addActionListener(new java.awt.event.ActionListener() {
@@ -86,7 +87,7 @@ public class DiseaseUpdateJPanel extends javax.swing.JPanel {
             }
         });
 
-        jLabel8.setText("Disease ID");
+        jLabel8.setText("Manufacturer Name");
 
         txtPersonID.setEditable(false);
 
@@ -103,21 +104,21 @@ public class DiseaseUpdateJPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtPersonID, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 84, Short.MAX_VALUE)
                                 .addComponent(btnSave, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)))
+                                .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(txtPersonID, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                         .addContainerGap(102, Short.MAX_VALUE))))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(btnBack)
@@ -157,8 +158,8 @@ public class DiseaseUpdateJPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
         if(!txtPersonID.getText().isEmpty() && !txtFirstName.getText().isEmpty()){
 
-        disease.setDiseaseID(txtPersonID.getText());
-        disease.setDiseaseName(txtFirstName.getText());
+        enterprise.setOrganizaitonName(txtPersonID.getText());
+        enterprise.setEnterpriselocation(txtFirstName.getText());
         JOptionPane.showMessageDialog(null, "Update Successfully!");
         
         txtFirstName.setEditable(false);
@@ -174,8 +175,8 @@ public class DiseaseUpdateJPanel extends javax.swing.JPanel {
         basePanel.remove(this);
         Component[] componentArray = basePanel.getComponents();
         Component component = componentArray[componentArray.length - 1];
-        ProviderJPanel panel = (ProviderJPanel) component;
-        panel.populateTable();
+        ProviderTableJPanel panel = (ProviderTableJPanel) component;
+        panel.populateTable1();
         CardLayout layout = (CardLayout)basePanel.getLayout();
         layout.previous(basePanel);
     }//GEN-LAST:event_btnBackActionPerformed

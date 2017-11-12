@@ -78,7 +78,7 @@ public class ProviderAreaJPanel extends javax.swing.JPanel {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        ProviderJPanel panel = new ProviderJPanel(basePanel,network);
+        ProviderTableJPanel panel = new ProviderTableJPanel(basePanel,network);
         basePanel.add("InventoryJPanel",panel);
         CardLayout layout = (CardLayout)basePanel.getLayout();
         layout.next(basePanel);

@@ -13,4 +13,20 @@ import java.util.ArrayList;
  */
 public class WorkAreaDirectory {
     private ArrayList<WorkArea> workAreaDirectory;
+    public WorkAreaDirectory(){
+        workAreaDirectory = new ArrayList<>();
+    }
+
+    public ArrayList<WorkArea> getWorkAreaDirectory() {
+        return workAreaDirectory;
+    }
+
+    public void setWorkAreaDirectory(ArrayList<WorkArea> workAreaDirectory) {
+        this.workAreaDirectory = workAreaDirectory;
+    }
+    public WorkArea addWorkArea(String name){
+        WorkArea workArea = new WorkArea(name);
+        workAreaDirectory.add(workArea);
+        return workArea;
+    }
 }

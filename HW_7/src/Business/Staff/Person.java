@@ -26,6 +26,14 @@ public class Person {
     public void setPersonName(String personName) {
         this.personName = personName;
     }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
+    }
     
     @Override
     public String toString() {
